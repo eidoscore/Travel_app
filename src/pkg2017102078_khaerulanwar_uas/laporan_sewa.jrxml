@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="365da728-6100-4391-96e5-2e842030b98c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="dari" class="java.lang.String"/>
+	<parameter name="sampai" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_travel_sewa_2017102078.`id_sewa` AS tbl_travel_sewa_2017102078_id_sewa,
+     tbl_travel_sewa_2017102078.`no_sewa` AS tbl_travel_sewa_2017102078_no_sewa,
+     tbl_travel_sewa_2017102078.`tgl_sewa` AS tbl_travel_sewa_2017102078_tgl_sewa,
+     tbl_travel_sewa_2017102078.`nm_penyewa` AS tbl_travel_sewa_2017102078_nm_penyewa,
+     tbl_travel_sewa_2017102078.`kd_travel` AS tbl_travel_sewa_2017102078_kd_travel,
+     tbl_travel_sewa_2017102078.`jumlah_sewa` AS tbl_travel_sewa_2017102078_jumlah_sewa,
+     tbl_travel_sewa_2017102078.`total_bayar` AS tbl_travel_sewa_2017102078_total_bayar,
+     tbl_travel_2017102078.`kd_travel` AS tbl_travel_2017102078_kd_travel,
+     tbl_travel_2017102078.`nm_kendaraan` AS tbl_travel_2017102078_nm_kendaraan,
+     tbl_travel_2017102078.`keterangan` AS tbl_travel_2017102078_keterangan,
+     tbl_travel_2017102078.`harga` AS tbl_travel_2017102078_harga,
+     tbl_travel_2017102078.`jumlah_travel` AS tbl_travel_2017102078_jumlah_travel
+FROM
+     `tbl_travel_sewa_2017102078` tbl_travel_sewa_2017102078 INNER JOIN `tbl_travel_2017102078` tbl_travel_2017102078 ON tbl_travel_sewa_2017102078.`kd_travel` = tbl_travel_2017102078.`kd_travel`
+WHERE
+tbl_travel_sewa_2017102078.`tgl_sewa` between $P{dari} and $P{sampai}]]>
+	</queryString>
+	<field name="tbl_travel_sewa_2017102078_id_sewa" class="java.lang.Integer"/>
+	<field name="tbl_travel_sewa_2017102078_no_sewa" class="java.lang.String"/>
+	<field name="tbl_travel_sewa_2017102078_tgl_sewa" class="java.sql.Date"/>
+	<field name="tbl_travel_sewa_2017102078_nm_penyewa" class="java.lang.String"/>
+	<field name="tbl_travel_sewa_2017102078_kd_travel" class="java.lang.Integer"/>
+	<field name="tbl_travel_sewa_2017102078_jumlah_sewa" class="java.lang.Integer"/>
+	<field name="tbl_travel_sewa_2017102078_total_bayar" class="java.lang.Double"/>
+	<field name="tbl_travel_2017102078_kd_travel" class="java.lang.Integer"/>
+	<field name="tbl_travel_2017102078_nm_kendaraan" class="java.lang.String"/>
+	<field name="tbl_travel_2017102078_keterangan" class="java.lang.String"/>
+	<field name="tbl_travel_2017102078_harga" class="java.lang.Double"/>
+	<field name="tbl_travel_2017102078_jumlah_travel" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c56154d8-d3b3-4708-8900-cbca100386f1" style="Title" x="100" y="0" width="662" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Laporan Penyewaan Travel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6dc10f8a-de6c-462a-aa71-f45058e9e170" style="SubTitle" x="258" y="62" width="265" height="22"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Detail Laporan Penyewaan Travel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3e746552-1b87-465c-aa0e-78ff1fdbf3e1" x="12" y="82" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Dari Tanggal :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="35af186d-2f96-41cb-a606-67ffaab1f76a" x="125" y="82" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{dari}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6eb850c9-f844-4bca-8984-45b898ba8bf3" x="12" y="102" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sampai Tanggal : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b4b15450-eef3-4090-8012-1c653cfb75b4" x="125" y="102" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{sampai}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="d04a3c0b-8dae-4218-b5d7-5cff1dfcf595" positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="059cb456-91ac-446c-8768-ce2953578a68" style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_sewa_2017102078_no_sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef83af9f-5097-4052-a5a9-7da2add29c60" style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_sewa_2017102078_nm_penyewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07a479b5-2310-4f60-9463-fe3611a6ae3b" style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_sewa_2017102078_tgl_sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6bfcb7e-be39-44e5-9a47-b863500c2b0f" style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_2017102078_kd_travel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f673d422-72e0-4c7e-8aa7-b224e8606dc2" style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_2017102078_nm_kendaraan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f26ab1c-b360-4ff1-bb42-0d2a241365d1" style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_2017102078_harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13cb0e57-c10c-4194-9035-862f0a0d63d6" style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_sewa_2017102078_jumlah_sewa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6522f3fa-ebc0-451f-9567-70056b07fda5" style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[tbl_travel_sewa_2017102078_total_bayar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="772185c9-106f-4e84-b5da-a7dcab4c58ac" style="Row" mode="Opaque" x="0" y="0" width="802" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3f9934de-6631-433a-b749-2ee58d5decae" style="Detail" x="0" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_sewa_2017102078_no_sewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3b0418b3-435d-44d7-9048-6dcd5771d7c4" style="Detail" x="100" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_sewa_2017102078_nm_penyewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="2e1aeeda-cd16-421c-9904-77b94a9b3e1e" style="Detail" x="200" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_sewa_2017102078_tgl_sewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="16080cf3-3e63-4c80-81b1-1d2075ad3d3a" style="Detail" x="300" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_2017102078_kd_travel}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="70579a6f-9f40-4934-9c49-65a9cc43ad04" style="Detail" x="400" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_2017102078_nm_kendaraan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="6f44fcde-77ec-44e4-9a9d-302538fd2af8" style="Detail" x="500" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_2017102078_harga}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="46fc70cb-f9ca-4159-873d-73c53b0ec2c6" style="Detail" x="600" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_sewa_2017102078_jumlah_sewa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="6ad81c8e-3204-4552-8bdf-8baefa1ff8f1" style="Detail" x="700" y="0" width="100" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tbl_travel_sewa_2017102078_total_bayar}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement uuid="c3f51764-3eed-4351-b23b-50bf7b75fe7b" positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="716cd6dd-0b56-4670-990d-1c5fc4937436" mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="db06bf2e-8b77-4ad0-ad13-556ea8abdb85" style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="cc43ea8a-287a-42f4-866f-821c235c4e18" style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="00ff29ac-f4b0-4965-ad5e-af213e3aa102" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
